@@ -49,7 +49,32 @@ public class Day1 {
 //            arr[i] = sc.nextInt();
 //        }
 //        System.out.println(maxRobValue(arr)); // House robber
+
+
+//        House Robber sum with modification - adjacent elements can be robbed if they are in same parity
+        int n = sc.nextInt(); // 9
+        int[] arr = new int[n]; // 10 5 15 25 900 600 700 50 15
+        for(int i=0; i<n; i++){
+            arr[i] = sc.nextInt();
+        }
+        System.out.println(maxRobValueParityModified(arr)); // 2275  // House robber - adjacent houses can be robbed if they are in same parity
+
     }
+
+    private static int maxRobValueParityModified(int[] arr) {
+        int[] dp = new int[arr.length];
+        dp[0] = arr[0];
+        dp[1] = (arr[0]%2==arr[1]%2) ? arr[0]+arr[1] : Math.max(arr[0], arr[1]);
+        for(int i = 2; i<arr.length; i++){
+            if(arr[i]%2==arr[i-1]%2){
+                dp[i] = Math.max(dp[i-1]+arr[i], dp[i-2]+arr[i]);
+            }else{
+                dp[i] = Math.max(dp[i-1], dp[i-2]+arr[i]);
+            }
+        }
+        return dp[arr.length-1];
+    }
+
 
     public static int maxRobValue(int[] arr) { // 10 5 100 200
         int[] dp = new int[arr.length];        // 10 10 110 210
