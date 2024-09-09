@@ -52,16 +52,43 @@ public class Day1 {
 
 
 //        House Robber sum with modification - adjacent elements can be robbed if they are in same parity
-        int n = sc.nextInt(); // 9
-        int[] arr = new int[n]; // 10 5 15 25 900 600 700 50 15
-        for(int i=0; i<n; i++){
-            arr[i] = sc.nextInt();
-        }
-        System.out.println(maxRobValueParityModified(arr)); // 2275  // House robber - adjacent houses can be robbed if they are in same parity
+//        int n = sc.nextInt(); // 9
+//        int[] arr = new int[n]; // 10 5 15 25 900 600 700 50 15
+//        for(int i=0; i<n; i++){
+//            arr[i] = sc.nextInt();
+//        }
+//        System.out.println(maxRobValueParityModified(arr)); // 2275  // House robber - adjacent houses can be robbed if they are in same parity
 
+
+//        Set bits - find number of 1s in its binary representation
+//        int n  = sc.nextInt();
+//        System.out.println(setbits(n));
+
+
+//        Set bits Using Brians Algorithm - Optimal way
+//        int n = sc.nextInt();
+//        System.out.println(setbitsBrian(n));
     }
 
-    private static int maxRobValueParityModified(int[] arr) {
+    public static int setbitsBrian(int n) {
+        int count = 0;
+        while(n!=0){
+            n = n&(n-1);
+            count++;
+        }
+        return count;
+    }
+
+    public static int setbits(int n) { // Count the number of 1s in its binary form
+        int noOf1 = 0;
+        while(n!=0){
+            noOf1 += n&1;
+            n = n>>1;
+        }
+        return noOf1;
+    }
+
+    public static int maxRobValueParityModified(int[] arr) {
         int[] dp = new int[arr.length];
         dp[0] = arr[0];
         dp[1] = (arr[0]%2==arr[1]%2) ? arr[0]+arr[1] : Math.max(arr[0], arr[1]);
