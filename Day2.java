@@ -30,6 +30,22 @@ public class Day2 {
 //        int n = sc.nextInt();
 //        System.out.println(hcf(m,n));
 
+
+//        find the only term which is repeated odd number of times
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for(int i = 0; i<n; i++){
+            arr[i] = sc.nextInt();
+        }
+        checkForOddRepeatedTerm(arr);
+    }
+
+    public static void checkForOddRepeatedTerm(int[] arr) {
+        int xor = 0;
+        for(int i: arr){
+            xor = i^xor;
+        }
+        System.out.println(xor);
     }
 
     public static int hcf(int m, int n){
