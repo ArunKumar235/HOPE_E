@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Stack;
 
 public class Day2 {
     public static void main(String[] args) {
@@ -32,12 +33,129 @@ public class Day2 {
 
 
 //        find the only term which is repeated odd number of times
-        int n = sc.nextInt();
-        int[] arr = new int[n];
-        for(int i = 0; i<n; i++){
-            arr[i] = sc.nextInt();
+//        int n = sc.nextInt(); // 5
+//        int[] arr = new int[n]; // 3 5 7 7 3
+//        for(int i = 0; i<n; i++){
+//            arr[i] = sc.nextInt();
+//        }
+//        checkForOddRepeatedTerm(arr); // 5
+
+
+//        Find the two odd number of repeated terms
+//        int n = sc.nextInt(); // 12
+//        int[] arr = new int[n]; // 5 6 5 7 4 4 25 25 25 25 30 30 - 3 5 6 6 4 3
+//        for(int i = 0; i<n; i++){
+//            arr[i] = sc.nextInt();
+//        }
+//        checkForTwoOddRepeatedTerm(arr);
+
+
+//        Remove adjacent elements from Array
+//        int n = sc.nextInt();
+//        int[] arr = new int[n];
+//        for(int i = 0; i<n; i++){
+//            arr[i] = sc.nextInt();
+//        }
+//        removeAdjacent(arr);
+
+
+//        Print all the combinations of a String
+//        String str = sc.next();
+//        combinations(str);
+
+
+//        Number of subarray whose sum is k
+//        int n = sc.nextInt(); // 9
+//        int[] arr = new int[n]; // 10 15 5 25 20 5 5 10 10
+//        for(int i = 0; i<n; i++){
+//            arr[i] = sc.nextInt();
+//        }
+//        int k = sc.nextInt(); // 30
+//        subArraySumK(arr,k);
+
+    }
+
+    public static void subArraySumK(int[] arr, int k){
+        int left = 0;
+        int right = 0;
+        int count = 0;
+        int currSum = arr[0];
+        while(left <= right && right<arr.length){
+            if(currSum==k){
+                count++;
+                currSum -= arr[left++];
+            }else if(currSum>k){
+                currSum -= arr[left++];
+            }else {
+                currSum += arr[right++];
+            }
+            right++;
         }
-        checkForOddRepeatedTerm(arr);
+        if(currSum==k){
+            count++;
+        }
+        System.out.println(count);
+    }
+
+    public static void combinations(String str){
+        int len = str.length();
+        for(int ctr = 1; ctr< (1<<len); ctr++){
+            for(int shift = 0; shift<len; shift++){
+                if((ctr&(1<<shift)) != 0){
+                    System.out.print(str.charAt(shift));
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    public static void removeAdjacent(int[] arr){
+        Stack<Integer> st = new Stack<>();
+        for(int curr: arr){
+            if(!st.isEmpty() && st.peek() == curr){
+                st.pop();
+            }else{
+                st.push(curr);
+            }
+        }
+        printStack(st);
+    }
+
+    public static void printStack(Stack<Integer> st){
+        if(st.isEmpty()){
+            return;
+        }
+        int val = st.pop();
+        printStack(st);
+        System.out.print(val+" ");
+    }
+
+    // Bug in Code
+    public static void checkForTwoOddRepeatedTerm(int[] arr){
+        int res=0;
+        for(int i=0;i<arr.length;i++) {
+            res=res^arr[i];
+        }
+        int i=1;
+        int count=0;
+        while(res!=0) {
+            if((res&1)==1) {
+                count=i;
+                break;
+            }
+            res=res>>1;
+            i++;
+        }int first=0;
+        int sec=0;
+        for(int j=0;j<arr.length;j++) {
+            if(((arr[j]>>count)&1)==1) {
+                first=first^arr[j];
+            }
+            else if(((arr[j]>>count)&1)!=1){
+                sec^=arr[j];
+            }
+        }
+        System.out.println(first+" "+sec);
     }
 
     public static void checkForOddRepeatedTerm(int[] arr) {
