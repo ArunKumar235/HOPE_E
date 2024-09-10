@@ -24,9 +24,24 @@ public class Day2 {
 //        int n = sc.nextInt(); // 17 - 10001
 //        toggleCount(m,n); // 1 bit need to be toggled so that both num are same
 
+
+//        HCF of two numbers using Euclidian Algorithm
+        int m = sc.nextInt();
+        int n = sc.nextInt();
+        hcf(m,n);
+
     }
 
-    private static void toggleCount(int m, int n) {
+    public static void hcf(int m, int n){
+        while(m!=0 && n!=0){
+            int temp = m%n;
+            n = n%m;
+            m = temp;
+        }
+        System.out.println((m==0) ? n : m);
+    }
+
+    public static void toggleCount(int m, int n) {
         int diff = m^n; // xor operation gives 1 if different and 0 if same
         int diffCounter = 0;
         while(diff!=0){ // loop to count the number of 1s in binary representation of diff, using Brian's Algorithm
@@ -46,7 +61,7 @@ public class Day2 {
 //        System.out.println(toggleCount);
     }
 
-    private static void checkAllDigitsArePresent(String num) {
+    public static void checkAllDigitsArePresent(String num) {
         int result = 0;
         for(int i = 0; i<num.length(); i++){
             result = result | (1<<(num.charAt(i) - '0'));
