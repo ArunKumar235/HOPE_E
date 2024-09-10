@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -47,7 +48,7 @@ public class Day2 {
 //        for(int i = 0; i<n; i++){
 //            arr[i] = sc.nextInt();
 //        }
-//        checkForTwoOddRepeatedTerm(arr);
+//        oddOccurrenceNumbers(arr); // 6 7 - 4 5
 
 
 //        Remove adjacent elements from Array
@@ -60,40 +61,78 @@ public class Day2 {
 
 
 //        Print all the combinations of a String
-//        String str = sc.next();
+//        String str = sc.next(); // abcd
 //        combinations(str);
 
 
 //        Number of subarray whose sum is k
 //        int n = sc.nextInt(); // 9
-//        int[] arr = new int[n]; // 10 15 5 25 20 5 5 10 10
+//        int[] arr = new int[n]; // 3 3 2 4 4 2 3 2 1
 //        for(int i = 0; i<n; i++){
 //            arr[i] = sc.nextInt();
 //        }
-//        int k = sc.nextInt(); // 30
-//        subArraySumK(arr,k);
+//        int k = sc.nextInt(); // 6
+//        subArraySumK(arr,k); // 4
 
+
+//        Maximum length of subarray with equal number of ones and twos
+//        String num = sc.next();
+//        maxLenWithEqual01(num);
+
+
+//        print N characters of a string
+//        int n = sc.nextInt();
+//        String str = sc.next();
+//        printRepeatedly(str, n);
+    }
+
+    public static void printRepeatedly(String str, int n){
+        for(int i = 0; i<n/str.length(); i++){
+            System.out.print(str);
+        }
+        for(int i = 0; i<n%str.length(); i++){
+            System.out.print(str.charAt(i));
+        }
+    }
+
+    public static void maxLenWithEqual01(String num){
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int counter = 0;
+        int maxLen = 0;
+        map.put(0,0);
+        for(int idx = 0; idx<num.length(); idx++){
+            if(num.charAt(idx)=='1'){
+                counter++;
+            }else{
+                counter--;
+            }
+            if(map.containsKey(counter)){
+                maxLen = Math.max(idx - map.get(counter), maxLen);
+            }else{
+                map.put(counter, idx);
+            }
+        }
+        System.out.println(map);
+        System.out.println(maxLen);
     }
 
     public static void subArraySumK(int[] arr, int k){
         int left = 0;
         int right = 0;
+        int currSum = 0;
         int count = 0;
-        int currSum = arr[0];
-        while(left <= right && right<arr.length){
-            if(currSum==k){
+        while (right < arr.length){
+            if(currSum == k){
                 count++;
-                currSum -= arr[left++];
-            }else if(currSum>k){
-                currSum -= arr[left++];
-            }else {
-                currSum += arr[right++];
+                currSum -= arr[left];
+                left++;
+            }else if(currSum < k){
+                currSum+=arr[right++];
+            }else{
+                currSum-=arr[left++];
             }
-            right++;
         }
-        if(currSum==k){
-            count++;
-        }
+        if(currSum==k) count++;
         System.out.println(count);
     }
 
@@ -130,32 +169,27 @@ public class Day2 {
         System.out.print(val+" ");
     }
 
-    // Bug in Code
-    public static void checkForTwoOddRepeatedTerm(int[] arr){
+    public static void oddOccurrenceNumbers(int[] arr){
         int res=0;
-        for(int i=0;i<arr.length;i++) {
-            res=res^arr[i];
+        for (int i : arr) {
+            res = res ^ i;
         }
-        int i=1;
-        int count=0;
-        while(res!=0) {
-            if((res&1)==1) {
-                count=i;
-                break;
-            }
-            res=res>>1;
-            i++;
-        }int first=0;
-        int sec=0;
-        for(int j=0;j<arr.length;j++) {
-            if(((arr[j]>>count)&1)==1) {
-                first=first^arr[j];
-            }
-            else if(((arr[j]>>count)&1)!=1){
-                sec^=arr[j];
+        int shift = 0;
+        while((res&(1<<shift))==0){ // loop to find the first location of 1 in the binary representation of res, if res = 10 (1010 & 0001 = 0, 1010 & 0010 = 0010 != 0 -> shift = 1)
+            shift++;
+        }
+        int zerosGrp = 0;
+        int onesGrp = 0;
+        for (int i : arr) {
+            if((i&(1<<shift))!=0){ // check if the bit at shift location is 0 or 1 ( 5-> 101 & 010 = 000 -> 0, 6-> 110 & 010 = 010 -> 2)
+//                System.out.print(i+"z ");
+                zerosGrp = zerosGrp ^i; // XOR group where bit is 0
+            }else{
+//                System.out.print(i+"o ");
+                onesGrp = onesGrp ^i; // XOR group where bit is 1
             }
         }
-        System.out.println(first+" "+sec);
+        System.out.println(zerosGrp +" "+ onesGrp);
     }
 
     public static void checkForOddRepeatedTerm(int[] arr) {
