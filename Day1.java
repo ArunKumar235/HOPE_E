@@ -23,7 +23,7 @@ public class Day1 {
 //        Check if c is a combination of continuous substring of a and b
 //        String a = sc.next(); // NOSE
 //        String b = sc.next(); // NECK
-//        String c = sc.next(); // NO N SE ECK - true NO CKNESE - false
+//        String c = sc.next(); // NO N SE ECK - true  lNO CKNESE - false
 //        boolean bool = false;
 //        if(a.length()+b.length() == c.length()){
 //            bool = validCombination(0,0,0,a,b,c);
