@@ -23,7 +23,7 @@ public class Day1 {
 //        Check if c is a combination of continuous substring of a and b
 //        String a = sc.next(); // NOSE
 //        String b = sc.next(); // NECK
-//        String c = sc.next(); // NO N SE ECK - true  lNO CKNESE - false
+//        String c = sc.next(); // NO N SE ECK - true  NO CKNESE - false
 //        boolean bool = false;
 //        if(a.length()+b.length() == c.length()){
 //            bool = validCombination(0,0,0,a,b,c);
@@ -102,7 +102,6 @@ public class Day1 {
         return dp[arr.length-1];
     }
 
-
     public static int maxRobValue(int[] arr) { // 10 5 100 200
         int[] dp = new int[arr.length];        // 10 10 110 210
         dp[0] = arr[0];
@@ -150,6 +149,7 @@ public class Day1 {
             return false;
         }
     }
+
     public static void toBinary(int num){
         if(num<2){
             System.out.print(num);
@@ -175,5 +175,4 @@ public class Day1 {
         System.out.print(n+" ");
         nToOne(n-1);
     }
-
 }
