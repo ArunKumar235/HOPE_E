@@ -25,20 +25,18 @@ public class Day2 {
 //        toggleCount(m,n); // 1 bit need to be toggled so that both num are same
 
 
-//        HCF of two numbers using Euclidian Algorithm
-        int m = sc.nextInt();
-        int n = sc.nextInt();
-        hcf(m,n);
+//        HCF of two numbers using Euclidean Algorithm
+//        int m = sc.nextInt();
+//        int n = sc.nextInt();
+//        System.out.println(hcf(m,n));
 
     }
 
-    public static void hcf(int m, int n){
-        while(m!=0 && n!=0){
-            int temp = m%n;
-            n = n%m;
-            m = temp;
+    public static int hcf(int m, int n){
+        if(n==0){ // return the non-zero term
+            return m;
         }
-        System.out.println((m==0) ? n : m);
+        return hcf(n, m%n); // Swap a with b, and b with a%b
     }
 
     public static void toggleCount(int m, int n) {
