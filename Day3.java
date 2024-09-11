@@ -51,6 +51,34 @@ public class Day3 {
 //        }
 //        int start = sc.nextInt(); // 2
 //        wordLadder(arr, start-1); // gauge elephant tap pox
+
+
+//        Rotate array K times
+//        int n = sc.nextInt(); // 5
+//        int[] arr = new int[n]; // 1 2 3 4 5
+//        for(int i = 0; i<n; i++){
+//            arr[i] = sc.nextInt();
+//        }
+//        int k = sc.nextInt(); // 2
+//        rotateArray(arr, k); // 4 5 1 2 3
+    }
+
+    public static void rotateArray(int[] arr, int k){
+        k = k % arr.length;
+        reverseArray(arr, 0, arr.length-1);
+        reverseArray(arr, 0, k-1);
+        reverseArray(arr, k, arr.length-1);
+        System.out.println(Arrays.toString(arr));
+    }
+
+    public static void reverseArray(int[] arr, int left, int right){
+        while(left<right){
+            int temp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = temp;
+            left++;
+            right--;
+        }
     }
 
     public static void wordLadder(String[] arr, int start){
