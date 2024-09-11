@@ -75,7 +75,7 @@ public class Day2 {
 //        subArraySumK(arr,k); // 4
 
 
-//        Maximum length of subarray with equal number of ones and twos
+//        Maximum length of subarray with equal number of ones and zeros
 //        String num = sc.next();
 //        maxLenWithEqual01(num);
 
