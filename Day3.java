@@ -27,7 +27,7 @@ public class Day3 {
 //        Lonest Commonn Subsequence
 //        String str1 = sc.next(); // abacus
 //        String str2 = sc.next(); // abcdef
-//        longestSubSequenceLength(str1, str2);
+//        longestSubSequenceLength(str1, str2); // 3 - abc
 
     }
 
@@ -46,6 +46,7 @@ public class Day3 {
                 }
             }
         }
+        System.out.println(dp[row][col]);
     }
 
     public static void subarrayMaxSum(int[] arr){
