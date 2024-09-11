@@ -24,11 +24,46 @@ public class Day3 {
 //        subarrayMaxSum(arr); // 210 // Kadane's Algorithm
 
 
-//        Lonest Commonn Subsequence
+//        Longest Common Subsequence
 //        String str1 = sc.next(); // abacus
 //        String str2 = sc.next(); // abcdef
 //        longestSubSequenceLength(str1, str2); // 3 - abc
 
+
+//        Sum of surrounding elements in matrix
+//        int R = sc.nextInt(); // 3
+//        int C = sc.nextInt(); // 3
+//        int[][] matrix = new int[R][C]; // [1 1 1] [1 1 1] [1 1 1]
+//        for(int i = 0; i<R; i++){
+//            for(int j = 0; j<C; j++){
+//                matrix[i][j] = sc.nextInt();
+//            }
+//        }
+//        sumOfSurrounding(matrix); // [3 5 3] [5 8 5] [3 5 3]
+    }
+
+    public static void sumOfSurrounding(int[][] matrix){
+        int R = matrix.length;
+        int C = matrix[0].length;
+        int[] rowDiff = {-1,-1,-1, 0, 1, 1, 1, 0};
+        int[] colDiff = {-1, 0, 1, 1, 1, 0,-1,-1};
+        int[][] result = new int[R][C];
+        for(int row = 0; row<R; row++){
+            for(int col = 0; col<C; col++){
+                int sum = 0;
+                for(int i = 0; i<8; i++){
+                    int adjR = row+rowDiff[i];
+                    int adjC = col+colDiff[i];
+                    if(adjR >= 0 && adjR < R && adjC >= 0 && adjC < C ){
+                        sum+=matrix[adjR][adjC];
+                    }
+                }
+                result[row][col] = sum;
+            }
+        }
+        for(int[] i: result){
+            System.out.println(Arrays.toString(i));
+        }
     }
 
     public static void longestSubSequenceLength(String str1, String str2){
