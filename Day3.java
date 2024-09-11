@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Day3 {
@@ -40,6 +41,29 @@ public class Day3 {
 //            }
 //        }
 //        sumOfSurrounding(matrix); // [3 5 3] [5 8 5] [3 5 3]
+
+
+//        Word Ladder
+//        int n = sc.nextInt(); // 5
+//        String[] arr = new String[n]; // [elephant gauge tap rig pox]
+//        for(int i = 0; i<n; i++){
+//            arr[i] = sc.next();
+//        }
+//        int start = sc.nextInt(); // 2
+//        wordLadder(arr, start-1); // gauge elephant tap pox
+    }
+
+    public static void wordLadder(String[] arr, int start){
+        HashMap<Character, Integer> firstCharMap = new HashMap<>();
+        for(int idx = 0; idx<arr.length; idx++){
+            firstCharMap.put(arr[idx].charAt(0), idx);
+        }
+        char ch = arr[start].charAt(0);
+        while(firstCharMap.containsKey(ch)){
+            int idx = firstCharMap.get(ch);
+            System.out.print(arr[idx]+" ");
+            ch = arr[idx].charAt(arr[idx].length()-1);
+        }
     }
 
     public static void sumOfSurrounding(int[][] matrix){
