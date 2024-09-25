@@ -70,6 +70,34 @@ public class Day1 {
 //        Set bits Using Brians Algorithm - Optimal way
 //        int n = sc.nextInt();
 //        System.out.println(setbitsBrian(n));
+
+//        All the terms are repeated 3 times, only one term is repeated once, print that number
+//         0 1 1 -> 3
+//         1 1 0 -> 6
+//         1 1 1 -> 7
+//         0 1 1 -> 3
+//         1 1 0 -> 6
+//         1 1 0 -> 6
+//         0 1 1 -> 3
+//  val = [4 7 4]-> %3 -> [1 1 1] -> 7 is the number repeated ony once, where are others are repeated thrice
+//        int[] arr = {3,6,7,3,6,6,3};
+//        System.out.println(termRepeatedOnceOnly(arr));
+    }
+
+    public static int termRepeatedOnceOnly(int[] arr){
+        int[] val = new int[32];
+        for(int num: arr){
+            String bin = Integer.toBinaryString(num);
+            for(int c = bin.length()-1; c>=0; c--){
+                if(bin.charAt(c)=='0') continue;
+                val[bin.length()-1-c]++;
+            }
+        }
+        StringBuilder sb = new StringBuilder();
+        for(int i = val.length-1; i>=0; i--){
+            sb.append(val[i]%3);
+        }
+        return Integer.parseInt(sb.toString(), 2);
     }
 
     public static int setbitsBrian(int n) {
