@@ -71,6 +71,7 @@ public class Day1 {
 //        int n = sc.nextInt();
 //        System.out.println(setbitsBrian(n));
 
+
 //        All the terms are repeated 3 times, only one term is repeated once, print that number
 //         0 1 1 -> 3
 //         1 1 0 -> 6
@@ -82,6 +83,7 @@ public class Day1 {
 //  val = [4 7 4]-> %3 -> [1 1 1] -> 7 is the number repeated ony once, where are others are repeated thrice
 //        int[] arr = {3,6,7,3,6,6,3};
 //        System.out.println(termRepeatedOnceOnly(arr));
+
 
 //        xor of numbers form 0 to a
 //        0 = 0
@@ -95,6 +97,19 @@ public class Day1 {
 //        0^1^2^3^4^5^6^7^8 = 8
 //        int a = sc.nextInt();
 //        System.out.println(xor_from_range_0_to_a(a));
+
+
+//        xor of numbers in range a to b
+//        [xor of 3 to 6] is [[xor of 0 to 6] xor [xor 0 to 2]], so that the extra terms from 0 to a-1 cancels out
+//        3^4^5^6 = (0^1^2^3^4^5^6)  ^  (0^1^2)
+//        int a = sc.nextInt();
+//        int b = sc.nextInt();
+//        System.out.println(xor_from_range_a_to_b(a,b));
+    }
+
+
+    public static int xor_from_range_a_to_b(int a, int b) {
+        return xor_from_range_0_to_a(a-1) ^ xor_from_range_0_to_a(b);
     }
 
     public static int xor_from_range_0_to_a(int a) {
@@ -108,7 +123,6 @@ public class Day1 {
             return 0;
         }
     }
-
 
     public static int termRepeatedOnceOnly(int[] arr){
         int[] val = new int[32];
