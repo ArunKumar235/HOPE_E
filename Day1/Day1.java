@@ -82,7 +82,33 @@ public class Day1 {
 //  val = [4 7 4]-> %3 -> [1 1 1] -> 7 is the number repeated ony once, where are others are repeated thrice
 //        int[] arr = {3,6,7,3,6,6,3};
 //        System.out.println(termRepeatedOnceOnly(arr));
+
+//        xor of numbers form 0 to a
+//        0 = 0
+//        0^1 = 1
+//        0^1^2 = 3
+//        0^1^2^3 = 0
+//        0^1^2^3^4 = 4
+//        0^1^2^3^4^5 = 1
+//        0^1^2^3^4^5^6 = 7
+//        0^1^2^3^4^5^6^7 = 0
+//        0^1^2^3^4^5^6^7^8 = 8
+//        int a = sc.nextInt();
+//        System.out.println(xor_from_range_0_to_a(a));
     }
+
+    public static int xor_from_range_0_to_a(int a) {
+        if(a%4==0){
+            return a;
+        }else if(a%4==1){
+            return 1;
+        }else if(a%4==2){
+            return a+1;
+        }else{
+            return 0;
+        }
+    }
+
 
     public static int termRepeatedOnceOnly(int[] arr){
         int[] val = new int[32];
