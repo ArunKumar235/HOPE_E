@@ -54,17 +54,17 @@ public class Day2 {
 
 
 //        Remove adjacent elements from Array
-//        int n = sc.nextInt();
-//        int[] arr = new int[n];
+//        int n = sc.nextInt(); // 7
+//        int[] arr = new int[n]; // 1 2 4 4 2 5 1
 //        for(int i = 0; i<n; i++){
 //            arr[i] = sc.nextInt();
 //        }
-//        removeAdjacent(arr);
+//        removeAdjacent(arr); // 1 5 1
 
 
 //        Print all the combinations of a String
 //        String str = sc.next(); // abcd
-//        combinations(str);
+//        combinations(str); // a b ab c ac bc abc d ad bd abd cd acd bcd abcd
 
 
 //        Number of subarray whose sum is k
@@ -78,14 +78,14 @@ public class Day2 {
 
 
 //        Maximum length of subarray with equal number of ones and zeros
-//        String num = sc.next();
-//        maxLenWithEqual01(num);
+//        String num = sc.next(); // 100100101110
+//        maxLenWithEqual01(num); // 11
 
 
 //        print N characters of a string
-//        int n = sc.nextInt();
-//        String str = sc.next();
-//        printRepeatedly(str, n);
+//        int n = sc.nextInt(); // 8
+//        String str = sc.next(); // abc
+//        printRepeatedly(str, n); // abcabcab
     }
 
     public static void printRepeatedly(String str, int n){
@@ -146,7 +146,7 @@ public class Day2 {
                     System.out.print(str.charAt(shift));
                 }
             }
-            System.out.println();
+            System.out.print(" ");
         }
     }
 
