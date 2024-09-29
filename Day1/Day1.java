@@ -105,8 +105,33 @@ public class Day1 {
 //        int a = sc.nextInt();
 //        int b = sc.nextInt();
 //        System.out.println(xor_from_range_a_to_b(a,b));
+
+        // Accept a digit n and a digit p, print the square root of n, with a precision of p digits
+//        int n = sc.nextInt(); // 101
+//        int p = sc.nextInt(); // 10
+//        System.out.printf("%."+p+"f", sqrt(n,p)); // 10.0498756211 → Square root of 101, with a precision of 10 digits, -> Math.sqrt(101)
     }
 
+    public static double sqrt(int n, int p){
+        double root = 0.0;
+        int start = 0, end = n;
+        while(start<=end){
+            int mid = start + (end-start)/2;
+            if(mid * mid == n) return mid;
+            if(mid * mid < n) start = mid+1;
+            else end = mid-1;
+        }
+        root = end;
+        double incr = 0.1;
+        for(int i = 0; i<p; i++){
+            while(root * root <= n){
+                root += incr;
+            }
+            root -= incr;
+            incr/=10;
+        }
+        return root;
+    }
 
     public static int xor_from_range_a_to_b(int a, int b) {
         return xor_from_range_0_to_a(a-1) ^ xor_from_range_0_to_a(b);
