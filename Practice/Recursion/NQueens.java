@@ -1,4 +1,4 @@
-package Practice;
+package Practice.Recursion;
 
 public class NQueens {
     public static void main(String[] args) {

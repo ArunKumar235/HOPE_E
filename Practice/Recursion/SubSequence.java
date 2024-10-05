@@ -1,4 +1,4 @@
-package Practice;
+package Practice.Recursion;
 
 /*
     Generate all subsequence of the string

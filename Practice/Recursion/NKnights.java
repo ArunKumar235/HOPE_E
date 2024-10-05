@@ -1,4 +1,4 @@
-package Practice;
+package Practice.Recursion;
 /*
 
 print all possible combinations of k knights placed in an n*n board

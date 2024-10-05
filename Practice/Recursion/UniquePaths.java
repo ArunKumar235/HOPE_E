@@ -1,4 +1,4 @@
-package Practice;
+package Practice.Recursion;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package Practice;
+package Practice.Recursion;
 
 /*
 Given a dice, and a target k, print all the possible ways to obtain the sum k, by throwing dice multiple times
