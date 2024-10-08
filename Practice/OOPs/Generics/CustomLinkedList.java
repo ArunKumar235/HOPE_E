@@ -78,15 +78,18 @@ class LinkedList<T> {
         if(index==0){
             head = head.next;
         }else{
-            Node<T> temp = head;
-            while(index>1 && temp.next!=null){
-                temp = temp.next;
-                index--;
-            }
-            temp.next = temp.next.next;
-            tail = temp.next;
+            deleteRecursion(index-1, head);
         }
         size--;
+    }
+
+    public void deleteRecursion(int index, Node<T> curr){
+        if(index==0){
+            curr.next = curr.next.next;
+            if(curr.next==null) tail = curr;
+        }else{
+            deleteRecursion(index-1, curr.next);
+        }
     }
 }
 
