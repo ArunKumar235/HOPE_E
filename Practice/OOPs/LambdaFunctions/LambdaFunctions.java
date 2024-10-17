@@ -36,6 +36,7 @@ public class LambdaFunctions {
     }
 }
 
+@FunctionalInterface // interface with only one abstract method
 interface Operation{
     int operation(int a, int b);
 }
