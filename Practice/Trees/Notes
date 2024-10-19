@@ -1,0 +1,40 @@
+Size - total number of nodes
+Child & Parent - relationship between nodes
+Sibling - nodes with same parent
+Leaf - nodes with no children
+Edge - connection between nodes
+Height - number of edges on longest path from root to leaf
+Level - difference of height of node and root
+Ancestor & Descendant - relationship between nodes
+Degree - number of children of a node
+
+
+Types of Binary Trees
+1. Complete Binary Tree - all levels are completely filled except possibly the last level and all nodes are as left as possible
+2. Full Binary Tree / Strict Binary Tree - every node has 0 or 2 children
+3. Perfect Binary Tree - all internal nodes have 2 children and all leaves are at same level
+4. Balanced Binary Tree - height is O(log n) where n is number of nodes. For every node in the tree, the difference of height of left and right subtree of that node is <=1
+5. Skewed Binary Tree - height is O(n) where n is number of nodes
+6. Ordered Binary Tree - left child is less than parent and right child is greater than parent
+
+
+Properties of Binary Trees
+1. In a perfect binary tree of height h, there are 2^(h+1) - 1 nodes
+2. In a perfect binary tree of height h, total number of leaf nodes are 2^h
+3. If there are N leaf nodes in a binary tree, the minimum number of levels is log2(N)
+4. If there are N total nodes in a binary tree, the minimum number of levels is log2(N+1)
+5. In a strict binary tree, number of leaf nodes is equal to number of internal nodes + 1
+6. In a binary tree, the number of leaf nodes is equal to number of nodes with degree 2 + 1
+
+
+Traversals
+1. Preorder - root, left, right
+    Used to create a copy of the tree
+    Used for evaluating math expressions
+    Used for serialisation from string/ array
+2. Inorder - left, root, right
+    In BST, inorder traversal gives nodes in sorted order
+3. Postorder - left, right, root
+    Used to delete the tree
+    Used to perform bottom up evaluation
+
